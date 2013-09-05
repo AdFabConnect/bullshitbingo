@@ -11,4 +11,4 @@ Le gagnant est le premier qui parvient à barrer une ligne ou une colonne entiè
 
 Avec son design ultra soigné, ses effets CSS3 uniques au monde, retrouvez-vous au centre de la guerre froide à déjouer les pièges de la propagande !
 
-Staline Bingo ? Ca fait froid dans le dos ﻿!
+Staline Bingo ? Ca fait froid dans le dos ﻿! 
