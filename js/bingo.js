@@ -13,8 +13,12 @@ var Bingo = {
             Grid.init(JSON.parse(res.response));
         });
         
+        window.addEventListener('VICTORY', function ()
+        {
+            alert('VICTORY');
+        });
+        
     }
-    
 };
 
 if(document.loaded) Bingo.init();
