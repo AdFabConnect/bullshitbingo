@@ -26,6 +26,8 @@ var Grid = {
     generateBox : function ()
     {
         var _this =this;
+        this.arrayBox = [];
+        this.arrayChecked = [];
         for (var i = 0; i < this.dataJson.length; i++) {
             _this.arrayChecked[i] = [];
             for (var j = 0; j < this.dataJson[i].length; j++) {
@@ -45,6 +47,7 @@ var Grid = {
     
     /**
      * Will loop through two dimentionnal array to check horizontally, vertically, diagonally
+     * @param {Object} position, with two value -> i & j
      */
     checkForVictory : function (position)
     {
@@ -108,6 +111,11 @@ var Grid = {
      */
     victory : function ()
     {
+        for (var i = 0; i < this.arrayBox.length; i++) {
+            this.arrayBox[i].destroy();
+            this.arrayBox[i].$el.removeEventListener('BOX_SELECTED');
+        }
+        
         event = document.createEvent("HTMLEvents");
         event.initEvent("VICTORY", true, true);
         window.dispatchEvent(event);

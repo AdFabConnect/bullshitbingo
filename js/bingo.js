@@ -9,21 +9,31 @@ var Bingo = {
     
     itemPerRow : 4,
     
+    json : null,
+    
     /**
      * 
      * @param {Object} selectors, Bingo game container
      */
     init : function (selectors)
     {
-        AjaxRequest('js/data/terms.json', 'GET', function (res)
-        {
-            Grid.init(JSON.parse(res.response));
-        });
+        var _this = this;
+        if(typeof this.json === "undefined" || this.json === null)
+            AjaxRequest('js/data/terms.json', 'GET', function (res)
+            {
+                
+                _this.json = JSON.parse(res.response);
+                Grid.init(_this.json);
+            });
+        else Grid.init(this.json);
         
-        window.addEventListener('VICTORY', function ()
+        var victoryHandler = function ()
         {
-            alert('VICTORY');
-        });
+            var confirmation = confirm('VICTORY ! play again ?');
+            if(confirmation) Grid.init(_this.json);
+        };  
+        
+        window.addEventListener('VICTORY', victoryHandler);
         
     }
 };
