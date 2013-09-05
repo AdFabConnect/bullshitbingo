@@ -1,3 +1,6 @@
+/**
+ * Bingo Object : initialize the game
+ */
 var Bingo = {
     
     container : null,
@@ -6,6 +9,10 @@ var Bingo = {
     
     itemPerRow : 4,
     
+    /**
+     * 
+     * @param {Object} selectors, Bingo game container
+     */
     init : function (selectors)
     {
         AjaxRequest('js/data/terms.json', 'GET', function (res)

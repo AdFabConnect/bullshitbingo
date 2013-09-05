@@ -4,16 +4,15 @@ var Grid = {
     
     $container : null,
     
-    itemPerCollum : 4,
-    
-    itemPerRow : 4,
-    
     dataJson : null,
     
     arrayBox : [],
     
     arrayChecked : [],
     
+    /**
+     * Init the grid with data 
+     */
     init : function (dataJson)
     {
         this.dataJson = dataJson;
@@ -36,7 +35,7 @@ var Grid = {
                 
                 box.create();
                 
-                box.$el.addEventListener('BOX_SELECTED', function (e)
+                box.$el.addEventListener('BOX_SELECTED', function (e) // Listen for Box select event
                 {
                     _this.checkForVictory(e.target.position);
                 });
@@ -44,13 +43,16 @@ var Grid = {
         };
     },
     
+    /**
+     * Will loop through two dimentionnal array to check horizontally, vertically, diagonally
+     */
     checkForVictory : function (position)
     {
         this.arrayChecked[position.i][position.j] = 1;
         
          var counter = 0, i, j;
         
-        /* CHECK HORIZONTALY */
+        /* CHECK HORIZONTALLY */
         for (i = 0; i < this.arrayChecked.length; i++) {
             for (j = 0; j < this.arrayChecked[i].length; j++) {
                 counter += this.arrayChecked[i][j];
@@ -62,9 +64,9 @@ var Grid = {
             }
             counter = 0;
         };
-        counter = 0;
         
         /* CHECK VERTICALY */
+        counter = 0;
         for (i = 0; i < this.arrayChecked[0].length; i++) {
             for (j = 0; j < this.arrayChecked.length; j++) {
                 counter += this.arrayChecked[j][i];
@@ -77,8 +79,8 @@ var Grid = {
             counter = 0;
         };
         
-        counter = 0;
         /* CHECK DIAGONAL LEFT TO RIGHT */
+        counter = 0;
         for (i = 0; i < this.arrayChecked.length; i++) {
             counter += this.arrayChecked[i][i];
             if(counter === this.arrayChecked.length) {
@@ -88,9 +90,9 @@ var Grid = {
             }
         };
         
+        /* CHECK DIAGONAL RIGHT TO LEFT */
         counter = 0;
         j = 0;
-        /* CHECK DIAGONAL RIGHT TO LEFT */
         for (i = (this.arrayChecked.length - 1); i >= 0; i--) {
             counter += this.arrayChecked[i][j++];
             if(counter === this.arrayChecked.length) {
@@ -109,6 +111,6 @@ var Grid = {
         event = document.createEvent("HTMLEvents");
         event.initEvent("VICTORY", true, true);
         window.dispatchEvent(event);
-    },
+    }
     
 };

@@ -24,16 +24,17 @@ function AjaxRequest (fileName, method, callback)
 /**
  * 
  * @param {Object} tag
+ * @param {String} className
  * @param {Object} html
  * @param {Object} daddy
  * 
  * @return {Object} object html
  */
-function addElement (tag, html, daddy)
+function addElement (tag, className, html, daddy)
 {
     newElement = document.createElement(tag);
     newElement.innerHTML = html;
+    newElement.setAttribute("class", className);
     daddy[0].appendChild(newElement);
-    
     return newElement;
 }
