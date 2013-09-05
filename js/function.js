@@ -36,5 +36,6 @@ function addElement (tag, className, html, daddy)
     newElement.innerHTML = html;
     newElement.setAttribute("class", className);
     daddy[0].appendChild(newElement);
+    
     return newElement;
 }
