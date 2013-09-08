@@ -32,7 +32,7 @@
             this.$el = addElement('div', 'box box-' + this.id, '', this.daddy);
             this.$el.innerHTML = '<span>'+ this.term + '</span>';
             this.$el.position = this.position;
-            this.$el.addEventListener('touchend', function ()
+            this.$el.addEventListener('click', function ()
             { // Tell that this box has been selected by bingo user, must listen to it to know it
                 event = document.createEvent("HTMLEvents");
                 event.initEvent("BOX_SELECTED", true, true);
@@ -49,7 +49,7 @@
          */
         Box.prototype.destroy = function ()
         {
-            this.$el.removeEventListener('touchend');
+            this.$el.removeEventListener('click');
             this.$el.parentNode.removeChild(this.$el);
         };
         

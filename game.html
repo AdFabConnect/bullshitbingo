@@ -4,7 +4,8 @@
         <meta charset="utf-8" />
         <title>game</title>
         <style type="text/css" media="screen">
-        html, body, .wrapper{width: 100%;height: 100%;}
+        	html, body, .wrapper{width: 100%;height: 100%;}
+        	.wrapper{display:none;}
             .wrapper .box{
                 float:left;
                 width: 24%;
@@ -24,6 +25,11 @@
         <div class="wrapper" >
             
         </div>
+        <div class="ui" >
+            <button id="join">Join room</button>
+            <button id="create">Create room</button>
+        </div>
+        <script src="http://192.168.1.34:88/socket.io/socket.io.js" type="text/javascript" charset="utf-8"></script>
         <script src="js/function.js" type="text/javascript" charset="utf-8"></script>
         <script src="js/box.js" type="text/javascript" charset="utf-8"></script>
         <script src="js/grid.js" type="text/javascript" charset="utf-8"></script>
