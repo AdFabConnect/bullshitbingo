@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="BULLSHITBINGO" default="build">
+	<target name="build" depends="prepare,jslint" />
+
+	<target name="build-parallel" depends="prepare" />
+
+	<target name="tools-parallel" description="Run tools in parallel">
+		<parallel threadCount="2">
+			<antcall target="jslint" />
+		</parallel>
+	</target>
+
+	<target name="clean" description="Cleanup build artifacts">
+		<delete dir="${basedir}/devops/build/logs" />
+	</target>
+
+	<target name="prepare" depends="clean" description="Prepare for build">
+		<mkdir dir="${basedir}/devops/build/logs" />
+	</target>
+	
+	
+	<target name="jslint" description="Run the JSLint tool on JS files">
+       <fileset dir="${basedir}/js" id="jsfiles.raw">
+       <include name="**/*.js" />
+       <!--exclude name="**/*.min.js" /-->
+       </fileset>
+       <pathconvert pathsep=" " property="jsfiles.clean" refid="jsfiles.raw" />
+       <exec executable="java" output="devops/build/logs/jslint.xml">
+       <arg line="-jar /home/jslint4java-2.0.2.jar --report xml ${jsfiles.clean}" />
+       </exec>
+    </target>
+
+</project>
