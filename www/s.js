@@ -1,11 +1,24 @@
 var io = require('socket.io').listen(88);
 var fs = require('fs');
 var rooms = [];
+var jsonFiles = [ // Name of json file
+	"terms_0",
+	"terms_1",
+	"terms_2",
+	"terms_3",
+	"terms_4",
+	"terms_5",
+	"terms_6",
+];
 io.sockets.on('connection', function (s)
 {
 	s.on('room', function (data)
 	{
-		if(typeof rooms[data.room] === 'undefined' || rooms[data.room] === null){
+		console.log(jsonFiles[data.room]);
+		if(typeof jsonFiles[data.room] !== 'undefined' || jsonFiles[data.room] !== null){
+			rooms[data.room] = '/data/' + data.room + '.json';
+		}
+		else if(typeof rooms[data.room] === 'undefined' || rooms[data.room] === null){
 			rooms[data.room] = '/data/terms_' + Math.floor(Math.random() * 7) + '.json';
 		}
 		s.roomName = data.room;
