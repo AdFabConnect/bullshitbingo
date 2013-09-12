@@ -21,6 +21,8 @@ var Bingo = {
     
     create : null,
     
+    hasTerms : false,
+    
     server : 'http://192.168.1.34:88/', // local home
     //server : 'http://ic.adfab.fr:88/' // server IC
     
@@ -39,7 +41,6 @@ var Bingo = {
      */
     init : function ()
     {
-    	console.log('init');
     	if(typeof Bingo.wrapper === "undefined" || Bingo.wrapper === null) Bingo.getElement();
     	Bingo.ui.style.display = 'block';
     	Bingo.wrapper.style.display = 'none';
@@ -54,11 +55,11 @@ var Bingo = {
 			}
     	};
     	Bingo.join.addEventListener('click', newRoom);
-    	
     	Bingo.create.addEventListener('click', newRoom);
     	
         window.addEventListener('VICTORY', function ()
         {
+        	Bingo.hasTerms = false;
         	Bingo.socket.emit('victory', {});
             var confirmation = confirm('VICTORY ! play again ?');
             if(confirmation) Bingo.play();
@@ -86,13 +87,16 @@ var Bingo = {
 	    });
 	    Bingo.socket.on('terms', function (json)
 	    {
+	    	if(Bingo.hasTerms) return;
 	    	Bingo.ui.style.display = 'none';
 	    	Bingo.wrapper.style.display = 'block';
 	    	Bingo.json = json;
     		Grid.init(Bingo.json);
+	    	Bingo.hasTerms = true;
 	    });
 	    Bingo.socket.on('end', function ()
 	    {
+	    	Bingo.hasTerms = false;
 	    	Bingo.isConnected = false;
 	    	Bingo.socket.emit('leave', { room : roomToConnect });
 	    	Bingo.socket.disconnect();

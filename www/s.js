@@ -1,13 +1,16 @@
 var io = require('socket.io').listen(88);
 var fs = require('fs');
-
+var rooms = [];
 io.sockets.on('connection', function (s)
 {
 	s.on('room', function (data)
 	{
+		if(typeof rooms[data.room] === 'undefined' || rooms[data.room] === null){
+			rooms[data.room] = '/data/terms_' + Math.floor(Math.random() * 7) + '.json';
+		}
 		s.roomName = data.room;
 	    s.join(data.room);
-		fs.readFile(__dirname + '/data/terms.json', 'utf8', function (err, data)
+		fs.readFile(__dirname + rooms[data.room], 'utf8', function (err, data)
 		{
 			if (err) {
 				console.log('Error: ' + err);
