@@ -1,0 +1,74 @@
+[
+    [
+        {
+            "id" : "0",
+            "term" : "meeting"
+        },
+        {
+            "id" : "1",
+            "term" : "Brainstorming"
+        },
+        {
+            "id" : "2",
+            "term" : "Result"
+        },
+        {
+            "id" : "3",
+            "term" : "Agenda"
+        }
+    ],
+    [
+        {
+            "id" : "4",
+            "term" : "Diagram"
+        },
+        {
+            "id" : "5",
+            "term" : "Collaborator"
+        },
+        {
+            "id" : "6",
+            "term" : "Growth"
+        },
+        {
+            "id" : "7",
+            "term" : "Finance"
+        }
+    ],
+    [
+        {
+            "id" : "8",
+            "term" : "Fired"
+        },
+        {
+            "id" : "9",
+            "term" : "Hired"
+        },
+        {
+            "id" : "10",
+            "term" : "Videoconferencing"
+        },
+        {
+            "id" : "11",
+            "term" : "Fall"
+        }
+    ],
+    [
+        {
+            "id" : "12",
+            "term" : "Progress"
+        },
+        {
+            "id" : "13",
+            "term" : "Talk"
+        },
+        {
+            "id" : "14",
+            "term" : "Report"
+        },
+        {
+            "id" : "15",
+            "term" : "Leadership"
+        }
+    ]
+]

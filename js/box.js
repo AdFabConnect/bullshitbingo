@@ -37,6 +37,7 @@
                 event = document.createEvent("HTMLEvents");
                 event.initEvent("BOX_SELECTED", true, true);
                 _this.$el.className += ' active';
+                _this.$el.innerHTML = '<span>&#9773;</span>';
                 _this.$el.dispatchEvent(event);
                 
                 // TODO : to remove later when merging file with real skin

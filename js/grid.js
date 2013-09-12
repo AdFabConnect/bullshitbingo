@@ -111,14 +111,18 @@ var Grid = {
      */
     victory : function ()
     {
-        for (var i = 0; i < this.arrayBox.length; i++) {
-            this.arrayBox[i].destroy();
-            this.arrayBox[i].$el.removeEventListener('BOX_SELECTED');
-        }
+        var _this = this;
         
-        event = document.createEvent("HTMLEvents");
-        event.initEvent("VICTORY", true, true);
-        window.dispatchEvent(event);
+        setTimeout( function() {
+            for (var i = 0; i < _this.arrayBox.length; i++) {
+                _this.arrayBox[i].destroy();
+                _this.arrayBox[i].$el.removeEventListener('BOX_SELECTED');
+            }
+            
+            event = document.createEvent("HTMLEvents");
+            event.initEvent("VICTORY", true, true);
+            window.dispatchEvent(event);
+        }, 600);
     }
     
 };

@@ -23,7 +23,7 @@ var Bingo = {
     
     hasTerms : false,
     
-    server : 'http://192.168.1.34:88/', // local home
+    server : 'http://192.168.1.101:88/', // local home
     //server : 'http://ic.adfab.fr:88/' // server IC
     
     isConnected : false,
