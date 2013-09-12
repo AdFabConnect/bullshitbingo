@@ -3,15 +3,26 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
         <link rel="stylesheet" type="text/css" href="style.css" />
         <title>Bullshit Bingo</title>
     </head>
     <body>
-        <div class="ui" >
-            <button id="join">Join room</button>
-            <button id="create">Create room</button>
+        <div class="ui">
+            <!--button id="create">Create room</button-->
+            <select id="create">
+                <option value="" selected="selected">Choose your theme</option>
+                <option value="developer_0">Dev</option>
+                <option value="Internet_1">Web</option>
+                <option value="Meeting_2">Meeting</option>
+            </select>
+            <button id="join">Play</button>
         </div>
-        <div class="popin">Gagné !</div>
+        <div id="popin">
+            <span id="popin-msg">You win !</span>   
+            <img src="staline.jpg" alt="" />         
+            <a href="javascript: window.location.reload();">Replay</a>
+        </div>
         <div class="sunburst">
             <div class="outer">
                 <b></b>

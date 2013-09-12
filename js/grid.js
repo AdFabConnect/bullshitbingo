@@ -46,6 +46,18 @@ var Grid = {
     },
     
     /**
+     * Generate grid made of boxes 
+     */
+    removeBox: function() {
+        var _this = this;
+        
+        for (var i = 0; i < _this.arrayBox.length; i++) {
+            _this.arrayBox[i].destroy();
+            _this.arrayBox[i].$el.removeEventListener('BOX_SELECTED');
+        }
+    },
+    
+    /**
      * Will loop through two dimentionnal array to check horizontally, vertically, diagonally
      * @param {Object} position, with two value -> i & j
      */
@@ -111,18 +123,12 @@ var Grid = {
      */
     victory : function ()
     {
-        var _this = this;
-        
-        setTimeout( function() {
-            for (var i = 0; i < _this.arrayBox.length; i++) {
-                _this.arrayBox[i].destroy();
-                _this.arrayBox[i].$el.removeEventListener('BOX_SELECTED');
-            }
+        //setTimeout( function() {
             
             event = document.createEvent("HTMLEvents");
             event.initEvent("VICTORY", true, true);
             window.dispatchEvent(event);
-        }, 600);
+        //}, 600);
     }
     
 };
